@@ -23,14 +23,14 @@ class Train_NER(References):
 
 
 """Training Starts"""
-t = Train_NER()
-t.train_entity()
+# t = Train_NER()
+# t.train_entity()
 """Training Ends"""
 
 
 """Inferencing Starts"""
 # i = NameEntitiesInference()
-# text = input()
-# i.get_Entities(text)
+# text = "#Directed_Studies are the important one"
+# print(i.get_Entities(text))
 
 """Inferencing Ends"""

@@ -6,6 +6,7 @@ from tensorflow.keras.callbacks import EarlyStopping
 import random
 from spacy.util import minibatch, compounding
 from pathlib import Path
+from spacy.training.example import Example
 
 
 import pickle
@@ -27,7 +28,6 @@ class ModelStruct(References):
         model.add(Dense(2, activation='softmax'))
 
         model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-
         return model
 
     def model_arch_multiclass(self, input_len):
@@ -52,7 +52,7 @@ class ModelStruct(References):
     def train_model_multiclass(self, model, X_train, Y_train):
         """Training Binary Classifier Model"""
 
-        epochs = 10
+        epochs = 20
         batch_size = 64
         early_stopping = EarlyStopping(monitor='val_loss', patience=20, verbose=1, mode='auto')
 
@@ -64,10 +64,10 @@ class ModelStruct(References):
     def save_model_binary(self, model, tokenizer):
         """ saving trained model"""
 
-        model.save(self.ROOT_DIR+self.OUTPUT + "binaryClassificationModel.h5")
+        model.save(self.ROOT_DIR+self.OUTPUT + "model_binaryclass/binaryClassificationModel.h5")
 
         # saving tokenizer
-        with open(self.ROOT_DIR +self.OUTPUT + 'tokenizerBinaryClassification.pickle', 'wb') as handle:
+        with open(self.ROOT_DIR +self.OUTPUT + 'model_binaryclass/tokenizerBinaryClassification.pickle', 'wb') as handle:
             pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 
@@ -75,7 +75,7 @@ class ModelStruct(References):
         """ saving trained model"""
 
         # saving model
-        model.save_weights(self.ROOT_DIR+self.OUTPUT + "model_multiclass/multiclassComplaintClassifier.h5")
+        model.save(self.ROOT_DIR+self.OUTPUT + "model_multiclass/multiclassComplaintClassifier.h5")
 
         # saving tokenizer
         with open(self.ROOT_DIR+self.OUTPUT + 'model_multiclass/tokenizerMulticlassComplaintClassification.pickle', 'wb') as handle:
@@ -97,15 +97,22 @@ class ModelStruct(References):
                 # batch up the examples using spaCy's minibatch
                 batches = minibatch(self.TRAIN_DATA, size=compounding(4.0, 32.0, 1.001))
                 for batch in batches:
-                    texts, annotations = zip(*batch)
-                    nlp.update(
-                        texts,  # batch of texts
-                        annotations,  # batch of annotations
-                        drop=0.5,  # dropout - make it harder to memorise data
-                        losses=losses,
-                    )
-                    print("Losses", losses)
+                    texts, annotations = zip(*batch)  # Unpack texts and annotations
+                    examples = []
+                    
+                    # Create Example objects for each text in the batch
+                    for text, annotation in zip(texts, annotations):
+                        doc = nlp.make_doc(text)  # Create a blank document for each individual text
+                        example = Example.from_dict(doc, annotation)  # Map text with annotations
+                        examples.append(example)  # Collect examples
 
+                    # Update the model with all examples in the batch
+                    nlp.update(
+                        examples,
+                        drop=0.5,       # Use dropout to prevent overfitting
+                        losses=losses   # Track losses
+                    )
+                print("Training losses:", losses)
             return nlp
 
     def save_NER(self, nlp):

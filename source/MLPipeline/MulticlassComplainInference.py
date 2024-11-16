@@ -2,7 +2,7 @@
 import pickle
 import numpy as np
 #Text Preprocessing
-
+from keras.models import load_model
 from .References import References
 from .Preprocess import Preprocessing
 from .WordEmbedding import WordEmbedding
@@ -24,8 +24,9 @@ class MulticlassComplainInference(References):
           with open(self.ROOT_DIR+self.OUTPUT+'model_multiclass/tokenizerMulticlassComplaintClassification.pickle', 'rb') as handle:
               self.tokenizer = pickle.load(handle)
 
-          self.model = self.model_struct.model_arch_multiclass(self.MAX_SEQUENCE_LENGTH)
-          self.model.load_weights(self.ROOT_DIR+self.OUTPUT+"model_multiclass/multiclassComplaintClassifier.h5")
+        #   self.model = self.model_struct.model_arch_multiclass(self.MAX_SEQUENCE_LENGTH)
+        #   self.model.load_weights(self.ROOT_DIR+self.OUTPUT+"model_multiclass/multiclassComplaintClassifier.h5")
+          self.model=load_model(self.ROOT_DIR+self.OUTPUT+"model_multiclass/multiclassComplaintClassifier.h5")
 
 
       def predict_complaint_type(self, text):
@@ -44,5 +45,5 @@ class MulticlassComplainInference(References):
           labels = ['Reschedule and Refund', 'Baggage Issue', 'Phone and Online Booking', 'Extra Charges',
                     'Delay and Customer Service', 'Seating Preferences', 'Reservation Issue', 'Customer Experience']
 
-
+          print(pred, np.argmax(pred))
           return labels[np.argmax(pred)]

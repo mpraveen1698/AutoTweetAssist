@@ -51,26 +51,27 @@ class Training_MulticlassClassifier(References):
         self.model = self.model_struct.train_model_multiclass(self.model, X_train, Y_train)
 
         # Saving the model
-        self.model_struct.save_model_binary(self.model, tokenizer)
+        self.model_struct.save_model_multiclass(self.model, tokenizer)
 
         # Evaluating the model
-        X_validate, Y_validate = self.evaluate.evaluate_model(X_test, Y_test)
+        X_validate, Y_validate = self.evaluate.evaluate_model(X_test, Y_test,self.model)
         self.evaluate.class_based_accuracy(X_validate, Y_validate, X_test, self.model)
 
 
 
 
 
-"""Trining Starts"""
-t = Training_MulticlassClassifier()
-t.train()
-"""Trining Ends"""
+# """Trining Starts"""
+# t = Training_MulticlassClassifier()
+# t.train()
+# """Trining Ends"""
 
 
 """Inferencing Starts"""
 # i = MulticlassComplainInference()
-# text = input()
-# i.predict_complaint_type(text)
+# text = "americanair leaving over 20 minutes late flight no warnings or communication until we were 15 minutes late flight thats called shitty customer svc"
+# #text= "@united is by far THE WORST airline I've ever had the misfortune of flying with in all the 44 countries I've flown to!!! It's outrageous!"
+# print(i.predict_complaint_type(text))
 """Inferencing Starts"""
 
 

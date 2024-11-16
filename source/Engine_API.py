@@ -13,10 +13,10 @@ def replyTweet():
     """ Reply to Tweets """
     print(request.form)
     data = request.form
-    data={"tweet": "@AmericanAir is the most unprofessional airline on earth", "user": "_xDontMindMe", "tweet_id": "1407791710902571008"}
+    # data={"complain": True,"complain_type":"Seating Preference", "user": "1853216357006954496", "tweetId": "1854997218903662822"}
     reply = ReplyTweet()
     return reply.reply_toTweet(data['tweetId'], data['complain'], data['complain_type'], data['user'])
 
 if __name__ == '__main__':
     app.run("0.0.0.0",debug=True)
-
+    # replyTweet()

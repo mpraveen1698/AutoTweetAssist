@@ -6,7 +6,7 @@ import pickle
 import numpy as np
 #Text Preprocessing
 
-
+from keras.models import load_model
 from .References import References
 from .Preprocess import Preprocessing
 from .WordEmbedding import WordEmbedding
@@ -15,7 +15,6 @@ from .ModelStruct import ModelStruct
 class BinaryInference(References):
 
       def __init__(self):
-
           self.preprocess = Preprocessing()
           self.embedding = WordEmbedding()
           self.model_struct = ModelStruct()
@@ -26,10 +25,7 @@ class BinaryInference(References):
           """ Loading trained models"""
           with open(self.ROOT_DIR+self.OUTPUT+'model_binaryclass/tokenizerBinaryClassification.pickle', 'rb') as handle:
               self.tokenizer = pickle.load(handle)
-
-          self.model = self.model_struct.model_arch_binary(self.BINARY_INPUT_LEN)
-          self.model.load_weights(self.ROOT_DIR+self.OUTPUT+"model_binaryclass/binaryClassificationModel.h5")
-
+          self.model=load_model(self.ROOT_DIR+self.OUTPUT+"model_binaryclass/binaryClassificationModel.h5")
 
       def predict_complaint(self, text):
           """ Predicting Complain Main"""

@@ -1,45 +1,30 @@
-
-
-from tweepy.streaming import StreamListener
 import json
 
-from .References import References
-
-# Create a StreamListener instance
-class TweetsListener(StreamListener):
+class TweetsListener:
+    """Process fetched tweets and send them to Kafka."""
 
     def __init__(self, producer, topic_name):
         self.producer = producer
         self.topic_name = topic_name
 
-    def on_data(self, data):
+    def process_tweet(self, tweet_data):
+        """Process tweet data and send it to Kafka."""
         try:
-            msg = json.loads(data)
-            print("new message")
-            # if tweet is longer than 140 characters
-
-            if "extended_tweet" in msg:
-                # add at the end of each tweet "t_end"
-                out_data = '{ "tweet":" ' +str(msg['extended_tweet']['full_text']).replace("\n"
-                                                                                           ,"" ) +'","user":" ' +str \
-                    (msg['user']['screen_name'] ) +'", "tweet_id":" ' +str(msg['id_str'] ) +'" }'
-                self.producer.send(self.topic_name, str.encode(out_data))
-            else:
-                # add at the end of each tweet "t_end"
-                out_data = '{ "tweet":" ' +str(msg['text']).replace("\n" ,"" ) +'","user":" ' +str \
-                    (msg['user']['screen_name'] ) +'", "tweet_id":" ' +str(msg['id_str'] ) +'" }'
-                self.producer.send(self.topic_name, str.encode(out_data))
-            return True
-
-        except BaseException as e:
-            print("Error on_data: %s" % str(e))
-        return True
-
-
-    def on_error(self, status):
-        print(status)
-        return True
-
-    def on_exception(self, exception):
-        print(exception)
-        return
+            print(tweet_data)
+            # Extract relevant fields
+            tweet_text = tweet_data.get("text", "")
+            tweet_id = tweet_data.get("id", "")
+            author_name = tweet_data.get("author_username", "")
+            
+            # Prepare output data
+            out_data = {
+                "tweet": tweet_text.replace("\n", ""),
+                "user": author_name,
+                "tweet_id": tweet_id
+            }
+            print("Sending to Kafka:", out_data)
+            
+            # Send tweet data to Kafka topic
+            self.producer.send(self.topic_name, json.dumps(out_data).encode('utf-8'))
+        except Exception as e:
+            print("Error processing tweet:", e)

@@ -1,3 +1,6 @@
+import os
+os.environ['PYSPARK_SUBMIT_ARGS'] = '--packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.3,org.apache.kafka:kafka-clients:3.3.1 pyspark-shell'
+
 import findspark
 findspark.init()
 
@@ -117,6 +120,6 @@ j.init_job()
 
 # ./lib/python3.7/site-packages/pyspark/bin/spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2 --py-files ./modular/source/MLPipeline.zip  ./modular/source/Engine_SparkJob.py localhost 9999 --master local[*]
 
-# spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2 --py-files MLPipeline.zip  Engine_SparkJob.py localhost 9999
+# spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.3,org.apache.kafka:kafka-clients:3.3.1 --py-files MLPipeline  Engine_SparkJob.py localhost 9999
 
 # kafka-console-consumer.sh --topic tweet-data --bootstrap-server localhost:9092

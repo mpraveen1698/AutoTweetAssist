@@ -55,7 +55,7 @@ class Training_BinaryClassifier(References):
         self.model_struct.save_model_binary(self.model, tokenizer)
 
         # Evaluating the model
-        X_validate, Y_validate = self.evaluate.evaluate_model(X_test, Y_test)
+        X_validate, Y_validate = self.evaluate.evaluate_model(X_test, Y_test,self.model)
         self.evaluate.class_based_accuracy(X_validate, Y_validate, X_test, self.model)
 
 
@@ -63,14 +63,15 @@ class Training_BinaryClassifier(References):
 
 
 """Trining Starts"""
-t = Training_BinaryClassifier()
-t.train()
+# t = Training_BinaryClassifier()
+# t.train()
 """Trining Ends"""
 
 
 """Inferencing Starts"""
 # i = BinaryInference()
-# text = input()
+# text = "americanair leaving over 20 minutes late flight no warnings or communication until we were 15 minutes late flight thats called shitty customer svc"
+# # text="I love the airways"
 # i.predict_complaint(text)
 """Inferencing Starts"""
 
