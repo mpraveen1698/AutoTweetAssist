@@ -50,21 +50,26 @@ class ReplyTweet(References):
             return False
     
     def getReplyText(self, complain_type, ticketId):
-        reply_txt = f"""We apologize for the inconvenience caused. Your issue has been logged under ticket ID: {ticketId}.
+        return f"""We apologize for the inconvenience caused. Your issue has been logged under ticket ID: {ticketId}.
 Our team is working to resolve it. For any further assistance, contact:
 - Email: support@proj.com
 - Phone: +1 (123) 456-7890
 Thank you."""
 
-        return reply_txt
+
+
 
     def reply_toTweet(self, tweetId, complain, complain_type, user):
-        if bool(complain):
+        if complain=='True':
             ticketId = int(random.random() * 100000)
             txt = self.getReplyText(complain_type, ticketId)
             replied = self.sendReply(tweetId, user, txt)
         else:
             ticketId = ""
-            replied = False
+            txt = """Thank you for choosing our services, and we look forward to continuing to serve you!.  
+                    For any further assistance, feel free to reach out:
+                    - Email: support@proj.com
+                    - Phone: +1 (123) 456-7890"""
+            replied = self.sendReply(tweetId, user, txt)
         return json.dumps({"replied": replied, "ticketId": ticketId})
 
