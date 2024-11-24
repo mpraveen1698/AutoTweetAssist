@@ -47,7 +47,7 @@ This project offers an advanced solution for Twitter customer support, combining
 
 **Workflow Diagram**
 
-![image](https://github.com/lokeshteja/Automatic-Tweet-Response-system/assets/28762945/98f26e52-a3e4-40e0-b329-9faccc46369b)
+![image](![image](https://github.com/user-attachments/assets/af1e2baf-6671-4622-8840-4f511fb22f8c))
 
 ## Potential Applications
 
