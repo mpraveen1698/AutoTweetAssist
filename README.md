@@ -47,7 +47,8 @@ This project offers an advanced solution for Twitter customer support, combining
 
 **Workflow Diagram**
 
-![image](![image](https://github.com/user-attachments/assets/af1e2baf-6671-4622-8840-4f511fb22f8c))
+![image](https://github.com/user-attachments/assets/cc5dd36c-25fd-4eda-85ca-e0ac5f6585bc)
+
 
 ## Potential Applications
 
