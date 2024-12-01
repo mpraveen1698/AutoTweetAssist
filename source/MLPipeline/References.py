@@ -8,15 +8,15 @@ import sys
 
 class References:
 
-    ROOT_DIR = ""
+    ROOT_DIR = "/Users/praveenkumar/Desktop/Fall 2024/Automatic-Tweet-Response-system-main/"
     ONE = 1
     ZERO = 0
     BATCH_SIZE_BINARY_EVALUATE = 32
 
-    BINARY_INPUT_LEN = 32
+    BINARY_INPUT_LEN = 21
     MAX_FEATURES_BINARY = 2000
 
-    OUTPUT = "output/"
+    OUTPUT = "output-new/"
     INPUT = "input/"
 
     # The maximum number of words to be used. (most frequent)
@@ -50,14 +50,14 @@ class References:
         ("Virgin America is recognized as leader in market", {"entities": [(0, 14, "ORG")]}),
         ("Virgin America is the best airline ever", {"entities": [(0, 14, "ORG")]}),
         ("I recently ordered from Swiggy", {"entities": [(24, 29, "ORG")]}),
-        ("American Airline is a great airline.", {"entities": [(0, 15, "ORG")]}),
-        ("American Airline is a great airline.", {"entities": [(0, 15, "ORG")]}),
-        ("American Airline is a great airline.", {"entities": [(0, 15, "ORG")]}),
-        ("American Airline is a great airline.", {"entities": [(0, 15, "ORG")]})
+        ("Proj_DirectedStudies is a great airline.", {"entities": [(0, 14, "ORG")]}),
+        ("Proj_DirectedStudies is a great airline.", {"entities": [(0, 14, "ORG")]}),
+        ("Proj_DirectedStudies is a great airline.", {"entities": [(0, 15, "ORG")]}),
+        ("Proj_DirectedStudies is a great airline.", {"entities": [(0, 15, "ORG")]})
     ]
 
     #Insert your IP with Port 9092 Eg- "34.221.72.51:9092"
-    BOOTSTRAP_SERVER = ""
+    BOOTSTRAP_SERVER = "localhost:9092"
 
     TOPIC_NAME = "tweet-data"
 
@@ -66,14 +66,15 @@ class References:
     # PARC_PATH = "./parc_sample"
 
     # Insert your credentials for Tweet
-    access_token = "1412669800707330048-Axh3xFxNAYbSt7t7XnBEW7QIprLk0y"
-    access_secret = "Zrzl6n5pkGzgiSBesIOooGwVqW6AHCEXmGGRXUw1bgMmt"
+    consumer_key = "excGmpgYvQTjLeMgXWHxFIczo"
+    consumer_secret = "uIj0ldQKzfi7hGU3Fb6HC4vloimoB7cMWatnF2LoFZ5MswBAMy"
+    access_token = "1853216357006954496-MbnigHotkFXYoKuXdBoPln9UED7BbZ"
+    access_token_secret = "A1UyV3fyjUxZfQ2xLXuaIeUuoUaTPx8HYlRxlulxBCUmD"
 
-    consumer_key = "PA4SD4sL3OK4RewfUGR5I58tj"
-    consumer_secret = "reDTNpU61whECGlWrZn0WERs5s1O7EdBSB0TdsG7VEDuz1Ybzz"
-
-    TRACK_TWEET = "American Airline"
+    TRACK_TWEET = "Proj_DirectedStudies"
 
     # api-endpoint
     #Insert your IP with Port 5000 Eg- "http://34.221.72.51:5000/"
-    URL = ""
+    URL = "http://127.0.0.1:5000"
+
+    BEARER_TOKEN= "AAAAAAAAAAAAAAAAAAAAAD8WwwEAAAAAKqFi8rire0kRaFL%2FkfmAZteY%2BBY%3DsiPp46hvu8fktNbpyhYj3N0lOtflCV66FphbsB1HHEOo3AQfOa"

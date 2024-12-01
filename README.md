@@ -34,6 +34,10 @@ This project offers an advanced solution for Twitter customer support, combining
 
 ### Installation
 
+<<<<<<< HEAD
+## Applications  
+This system is perfect for industries handling significant social media activity, including:  
+=======
 *(Step-by-step guide on setting up and running the project.)*
 -->
 ## How It Works
@@ -47,8 +51,7 @@ This project offers an advanced solution for Twitter customer support, combining
 
 **Workflow Diagram**
 
-![image](https://github.com/user-attachments/assets/cc5dd36c-25fd-4eda-85ca-e0ac5f6585bc)
-
+![image](https://github.com/lokeshteja/Automatic-Tweet-Response-system/assets/28762945/98f26e52-a3e4-40e0-b329-9faccc46369b)
 
 ## Potential Applications
 
@@ -58,4 +61,5 @@ Ideal for sectors with high volumes of social media traffic, such as:
 - E-commerce Platforms
 - Tech Corporations
 - Airlines & other Travel Agencies 
+>>>>>>> parent of fb21b646 (Final changes)
 
