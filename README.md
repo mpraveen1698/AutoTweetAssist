@@ -1,65 +1,47 @@
-# Automated Tweet Response System
+# Automated Tweet Response System  
 
-This project offers an advanced solution for Twitter customer support, combining real-time data streaming, machine learning, and automated ticket generation, enhancing the efficiency of customer service.
+This project delivers an innovative solution for Twitter-based customer support, seamlessly integrating real-time data processing, machine learning, and automated ticket generation to enhance customer service efficiency.  
 
-## Key Features
+## Key Features  
 
-- **Real-Time Tweet Processing**: Utilizes Spark Streaming for instantaneous tweet analysis to reduce response times.
-- **Intelligent Complaint Analysis**: Employs a two-stage ML process:
-  - Sentiment analysis to assess user sentiment.
-  - Complaint classification into categories like billing or technical issues.
-  - Named Entity Recognition (NER) model to extract entities like location from tweets.
-- **Automated Ticketing**: Creates support tickets and routes them based on analysis results.
-- **Data Storage**: Archives processed data in a data lake for in-depth future analysis and prompt issue resolution.
+- **Real-Time Tweet Processing**: Leverages Spark Streaming for instant tweet analysis, ensuring faster response times.  
+- **Advanced Complaint Analysis**: Implements a two-stage machine learning process:  
+  - **Sentiment Analysis**: Evaluates user emotions from tweets.  
+  - **Complaint Classification**: Categorizes issues into types such as billing or technical problems.  
+  - **Named Entity Recognition (NER)**: Extracts specific details like locations from tweets.  
+- **Automated Ticketing System**: Automatically generates and routes support tickets based on analysis outcomes.  
+- **Data Storage for Insights**: Archives processed data in a data lake, enabling detailed analysis and proactive issue resolution.  
 
-## Project Structure
+## Project Structure  
 
-- **Engines**: Houses ML models and the core processing logic.
-- **Helpers**: Assists with text preprocessing, model evaluation, API interactions, and Twitter communications.
+- **Engines**: Contains core ML models and processing logic.  
+- **Helpers**: Includes utilities for text preprocessing, model evaluation, API integration, and Twitter communication.  
 
-## Technologies Used
+## Technologies Used  
 
-- Spark Streaming for real-time data ingestion.
-- Machine Learning Libraries (e.g., Scikit-learn, PyTorch, TensorFlow).
-- Kafka for message queueing and handling.
-- Twitter API for data stream integration.
-- Data Lake solutions for scalable storage.
-- Finally Deployed this in AWS
-<!-- 
-## Getting Started
+- **Spark Streaming**: Facilitates real-time data ingestion.  
+- **Machine Learning Frameworks**: Utilizes Scikit-learn, PyTorch, and TensorFlow for model development.  
+- **Kafka**: Manages message queueing and streaming.  
+- **Twitter API**: Integrates real-time tweet streams.  
+- **Data Lake Solutions**: Provides scalable and efficient data storage.  
 
-### Prerequisites
+## How It Works  
 
-*(List of prerequisites and configurations for the project setup.)*
+1. Real-time tweets are captured using streaming tools.  
+2. Sentiment analysis determines user emotions in the tweets.  
+3. Complaint classification identifies the issue type.  
+4. The NER model extracts key details, such as locations or names.  
+5. Tickets are generated and routed to the appropriate teams.  
+6. All processed data is archived for strategic insights and improved issue resolution.  
 
-### Installation
+**Workflow Diagram**  
+![image](https://github.com/user-attachments/assets/cc5dd36c-25fd-4eda-85ca-e0ac5f6585bc)  
 
-<<<<<<< HEAD
 ## Applications  
+
 This system is perfect for industries handling significant social media activity, including:  
-=======
-*(Step-by-step guide on setting up and running the project.)*
--->
-## How It Works
 
-1. Tweets are captured in real-time via streaming.
-2. Sentiment analysis evaluates user emotions within the tweets.
-3. The complaint is categorized by the classification model.
-4. NER model extracts relevant entities from the tweet content.
-5. Tickets are generated and routed based on the analysis.
-6. Data is stored for strategic insights and effective problem resolution.
-
-**Workflow Diagram**
-
-![image](https://github.com/lokeshteja/Automatic-Tweet-Response-system/assets/28762945/98f26e52-a3e4-40e0-b329-9faccc46369b)
-
-## Potential Applications
-
-Ideal for sectors with high volumes of social media traffic, such as:
-
-- Customer Support Centers
-- E-commerce Platforms
-- Tech Corporations
-- Airlines & other Travel Agencies 
->>>>>>> parent of fb21b646 (Final changes)
-
+- Customer Support Centers  
+- E-commerce Platforms  
+- Technology Companies  
+- Airlines and Travel Agencies  
